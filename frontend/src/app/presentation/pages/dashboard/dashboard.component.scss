@@ -1,0 +1,92 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.stat-card {
+  background: #ffffff;
+  padding: 18px;
+  height: 7rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(16, 24, 40, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+}
+
+.stat-title {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.stat-value {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.charts-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+.card {
+  background: #fff;
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(16, 24, 40, 0.04);
+}
+
+.main-chart .chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.bars {
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  height: 200px;
+  padding: 6px 4px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #fbfdff 0%, #f7f9fc 100%);
+}
+
+.bar {
+  width: 100%;
+  background: linear-gradient(180deg, #008c75, #00b486);
+  border-radius: 6px 6px 0 0;
+  transition: transform 160ms ease;
+}
+
+.bar:hover { transform: translateY(-6px); }
+
+.chart-xlabels { display:flex; gap:8px; justify-content: space-between; margin-top:8px; font-size:0.8rem; color:#6b7280; }
+
+.activity ul { list-style:none; padding:0; margin: 0; display:flex; flex-direction:column; gap:10px; }
+.activity li { display:flex; justify-content:space-between; align-items:center; padding:8px; border-radius:8px; background: #fbfdff; }
+.act-title { font-weight:600; color:#0f172a; }
+.act-time { font-size:0.85rem; color:#6b7280; }
+.act-amount { font-weight:700; color:#7c0000; }
+
+@media (max-width: 900px) {
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .charts-row { grid-template-columns: 1fr; }
+  .bars { height: 160px; }
+}
+
+@media (max-width: 480px) {
+  .stats-row { grid-template-columns: 1fr; }
+  .bars { height: 130px; }
+}

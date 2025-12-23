@@ -1,0 +1,54 @@
+<div class="cont-prin-products">
+  <section class="section-1">
+    <div>
+      <h1>Gestión de Productos</h1>
+      <p>Administra los productos desde esta sección.</p>
+    </div>
+
+    <div class="user-actions">
+      <button type="button" class="btn-add-user" *ngIf="user.User.role == 'Admin'" (click)="openCreateProduct()">Agregar Producto</button>
+    </div>
+  </section>  
+  <app-create-producto *ngIf="showCreateForm" (create)="onCreateProduct($event)" (close)="closeCreateProduct()"></app-create-producto>
+  
+  <div class="input-search">
+    <input class="sub-top-inp inp-a" [formControl]="inpSearch" placeholder="Buscar Producto" type="text" > 
+  </div>
+
+  <section class="section-products">
+    <table class="products-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Descripción</th>
+          <th *ngIf="user.User.role == 'Admin'">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of products">
+          <td>{{ p.name }}</td>
+          <td>{{ p.price | currency:'USD':'symbol':'1.2-2' }}</td>
+          <td>{{ p.stock }}</td>
+          <td>{{ p.description }}</td>
+          <td *ngIf="user.User.role == 'Admin'">
+            <button type="button" class="btn-edit" (click)="editProduct(p._id)">Editar</button>
+            <button type="button" class="btn-delete" (click)="onDelete(p._id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <!-- modal editar producto -->
+  <div class="modal-overlay" *ngIf="editingProduct" (click)="editingProduct = null">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <app-editar-productos
+        [product]="editingProduct"
+        [productId]="editingProduct._id"
+        (saved)="handleEditSaved($event)"
+        (cancelled)="editingProduct = null">
+      </app-editar-productos>
+    </div>
+  </div>
+</div>

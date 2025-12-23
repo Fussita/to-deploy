@@ -1,0 +1,40 @@
+<div class="cont-prin-clie">
+    <section class="section-1">
+    <div>
+      <h1>Gestión de Clientes</h1>
+      <p>Administra los clientes desde esta sección.</p>
+    </div>
+
+    <div class="user-actions">
+      <button type="button" class="btn-add-user" (click)="openCreateUser()">Agregar Cliente</button>
+    </div>
+  </section>
+
+  <div class="input-search">
+      <input type="text" class="inp-a" placeholder="Buscar Cliente" [formControl]="inpSearch">
+    </div>
+
+  <section class="section-cards">
+    <div class="cards-grid">
+      <app-client-card *ngFor="let c of clients" [client]="c" (edit)="onEdit($event)" (delete)="onDelete($event)"></app-client-card>
+    </div>
+  </section>
+  
+  <!-- modal crear cliente -->
+  <app-create-cliente *ngIf="showCreateClient" (create)="onCreateCliente($event)" (cancel)="closeCreateClient()"></app-create-cliente>
+
+  <!-- modal editar cliente -->
+  <!-- si editingClient es el objeto cliente -->
+  <div class="modal-overlay" *ngIf="editingClient" (click)="editingClient = null">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <app-editar-cliente
+        [client]="editingClient"
+        [clientId]="editingClient._id"
+        (saved)="onEditSaved($event)"
+        (cancelled)="editingClient = null">
+      </app-editar-cliente>
+
+    </div>
+  </div>
+
+</div>

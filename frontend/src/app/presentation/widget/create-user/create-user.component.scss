@@ -1,0 +1,121 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.38);
+  z-index: 998;
+}
+
+.modal-window {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 999;
+}
+
+.modal-card {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(11, 22, 33, 0.18);
+  padding: 16px;
+  width: 100%;
+  max-width: 540px;
+}
+
+.dialog-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+  min-width: 0;
+}
+
+.title {
+  margin: 0 0 4px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #0b1621;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field > span {
+  font-size: 13px;
+  color: #21313a;
+  font-weight: 600;
+}
+
+input,
+select {
+  padding: 8px 10px;
+  border: 1px solid #e3e7ea;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.btn-cancel {
+  background: transparent;
+  border: 1px solid #d0d7da;
+  color: #21313a;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-save {
+  background: #008c75;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-save:active,
+.btn-save:focus {
+  transform: translateY(0.5px);
+}
+.field-error {
+  margin-top: 6px;
+}
+
+.field-error small {
+  display: block;
+  color: #b22a2a;
+  font-size: 12px;
+}
+
+.full { width:100%; }
+.actions { display:flex; justify-content:flex-end; gap:8px; margin-top:6px; }
+
+.form-alert { padding: 8px 10px; border-radius: 8px; font-size: 14px; }
+.form-alert.success { background: #e6f9f0; color: #006a53; border: 1px solid #cfeee6; }
+.form-alert.error { background: #fff0f0; color: #9b2b2b; border: 1px solid #ffd6d6; }

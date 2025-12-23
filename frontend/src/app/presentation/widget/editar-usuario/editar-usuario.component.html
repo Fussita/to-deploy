@@ -1,0 +1,28 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="editar-usuario-form">
+	<div class="field">
+		<label for="username">Usuario</label>
+		<input id="username" type="text" formControlName="username" placeholder="Nombre de usuario" />
+		 <div class="field-error" *ngIf="form.get('username')?.touched && form.get('username')?.invalid">
+        	<small *ngIf="form.get('username')?.hasError('required') && form.get('username')?.touched">Formato inválido.</small>
+			<small *ngIf="form.get('username')?.hasError('pattern') && form.get('username')?.touched">Formato inválido.</small>
+          </div>
+	</div>
+
+	<div class="field">
+		<label for="password">Contraseña</label>
+		<input id="password" type="password" formControlName="password" placeholder="Contraseña" />
+	</div>
+
+	<div class="field">
+		<label for="role">Rol</label>
+		<select id="role" formControlName="role">
+			<option value="Vendedor">Vendedor</option>
+			<option value="Admin">Administrador</option>
+		</select>
+	</div>
+
+	<div class="actions">
+		<button type="button" (click)="cancel()">Cancelar</button>
+		<button type="submit" [disabled]="form.invalid">Guardar</button>
+	</div>
+</form>

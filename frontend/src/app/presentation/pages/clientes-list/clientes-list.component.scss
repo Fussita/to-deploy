@@ -1,0 +1,126 @@
+.cont-prin-clie {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    gap: 20px;
+    box-sizing: border-box;
+}
+.section-1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 26px;
+
+}
+.btn-add-user{
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    background: #144b9d;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+        letter-spacing: 0.02em;
+    cursor: pointer;
+}
+.btn-add-user:hover {
+    background: #1d6ddc;
+}
+.btn-add-user:active{
+    background: #0e3a73;
+}
+
+/* Rejilla de tarjetas de clientes: 3 columnas en escritorio, 2 en tablet, 1 en móvil */
+.section-cards {
+    width: 100%;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 24px; /* fila columna */
+    align-items: start;
+    justify-items: stretch;
+    width: 100%;
+}
+
+@media (max-width: 1000px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+}
+
+@media (max-width: 640px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+}
+
+/* Asegurar que las tarjetas ocupen el ancho disponible dentro de cada celda */
+.cards-grid app-client-card {
+    width: 100%;
+}
+
+/* Modal overlay styles for editar-cliente */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(12, 20, 30, 0.48);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 24px;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 720px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content app-editar-cliente {
+    width: 100%;
+
+}
+
+.input-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 8px 0;
+}
+
+.input-search .sub-top-inp,
+.input-search .inp-a {
+  width: 100%;
+  max-width: 640px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(11,22,33,0.08);
+  box-shadow: 0 6px 18px rgba(11,22,33,0.06);
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  outline: none;
+  transition: box-shadow 120ms ease, transform 120ms ease;
+}
+
+.input-search .sub-top-inp:focus,
+.input-search .inp-a:focus {
+  box-shadow: 0 8px 22px rgba(11,22,33,0.12);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 680px) {
+  .input-search .sub-top-inp,
+  .input-search .inp-a {
+    max-width: 100%;
+    border-radius: 12px;
+  }
+}

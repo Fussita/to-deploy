@@ -1,0 +1,64 @@
+<div class="modal-overlay" (click)="onCancel()"></div>
+
+<div class="modal-window" role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
+  <div class="modal-card">
+    <form class="dialog-form" (ngSubmit)="onSave()" [formGroup]="form" novalidate>
+      <h3 class="title">Crear cliente</h3>
+
+      <div class="form-grid">
+        <label class="form-field">
+          <span>Nombre</span>
+          <input formControlName="name" type="text" />
+          <div class="field-error" *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
+            <small *ngIf="form.get('name')?.hasError('pattern') && form.get('name')?.touched">Solo letras y números, entre 3 y 100 carácteres.</small>
+            <small *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">El nombre es obligatorio.</small>
+          </div>
+        </label>
+
+        <label class="form-field">
+          <span>Cedula</span>
+          <input formControlName="cedula" type="text" />
+          <div class="field-error" *ngIf="form.get('cedula')?.touched && form.get('cedula')?.invalid">
+            <small *ngIf="form.get('cedula')?.hasError('pattern') && form.get('cedula')?.touched">Formato inválido.</small>
+            <small *ngIf="form.get('cedula')?.hasError('required') && form.get('cedula')?.touched">La cedula es obligatoria.</small>
+          </div>
+        </label>
+
+
+        <label class="form-field">
+          <span>Email</span>
+          <input formControlName="email" type="email" />
+          <div class="field-error" *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+            <small *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">El email es obligatorio.</small>
+            <small *ngIf="form.get('email')?.hasError('pattern') && form.get('email')?.touched">Solo formatos gmail, hotmail, outlook.</small>
+            <small *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">Formato inválido.</small>
+          </div>
+        </label>
+
+        <label class="form-field">
+          <span>Teléfono</span>
+          <input formControlName="phone" type="text" />
+          <div class="field-error" *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid">
+            <small *ngIf="form.get('phone')?.hasError('required') && form.get('phone')?.touched">El teléfono es obligatorio.</small>
+            <small *ngIf="form.get('phone')?.hasError('pattern') && form.get('phone')?.touched">Formato inválido.</small>
+          </div>
+        </label>
+
+        <label class="form-field">
+          <span>Dirección</span>
+          <input formControlName="address" type="text" />
+            <div class="field-error" *ngIf="form.get('address')?.touched && form.get('address')?.invalid">
+            <small *ngIf="form.get('address')?.hasError('required') && form.get('address')?.touched">La dirección es obligatoria.</small>
+            <small *ngIf="form.get('address')?.hasError('pattern') && form.get('address')?.touched">Solo letras y números, entre 4 y 200 carácteres.</small>
+          </div>
+        </label>
+
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-cancel" (click)="onCancel()" [disabled]="saving">Cancelar</button>
+        <button type="submit" class="btn-save" [disabled]="saving">{{ saving ? 'Creando...' : 'Crear' }}</button>
+      </div>
+    </form>
+  </div>
+</div>

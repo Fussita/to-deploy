@@ -1,0 +1,15 @@
+<div class="cont-principal" [class.nav-open]="showNavbar">
+    <!-- botón visible solo en mobile para abrir el navbar -->
+    <button class="toggle-btn" (click)="toggleNavbar()" aria-label="Abrir menú">☰</button>
+
+    <div class="navbar" [attr.aria-hidden]="!showNavbar">
+        <app-navbar></app-navbar>
+    </div>
+
+    <!-- overlay que aparece en mobile cuando el navbar está abierto -->
+    <div class="overlay" *ngIf="showNavbar" (click)="closeNavbar()" aria-hidden="true"></div>
+
+    <div class="content">
+        <router-outlet></router-outlet>       
+    </div>
+</div>

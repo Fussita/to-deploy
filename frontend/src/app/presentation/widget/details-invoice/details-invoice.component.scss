@@ -1,0 +1,117 @@
+.card-orden {
+  width: 600px;
+  height: 600px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  padding: 18px;
+  box-sizing: border-box;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: auto;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+.card-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.card-header .date {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.section {
+  padding: 8px 0;
+}
+
+.section h3 {
+  margin: 0 0 8px 0;
+  font-size: 0.95rem;
+}
+
+.client-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 12px;
+}
+
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.products-table th,
+.products-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #f2f2f2;
+  text-align: left;
+}
+
+.products-table thead th {
+  font-weight: 600;
+  background: #fafafa;
+}
+
+.no-products {
+  color: #777;
+  padding: 8px 0;
+}
+
+.summary {
+  margin-top: auto;
+  border-top: 1px solid #eee;
+  padding-top: 12px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+
+.actions {
+  padding-top: 12px;
+  border-top: 1px dashed #f0f0f0;
+}
+
+.status-row {
+  margin-bottom: 8px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.status {
+  font-weight: 700;
+  color: #282828;
+}
+
+.actions-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-complete {
+  padding: 10px 14px;
+  background: linear-gradient(90deg, #00b894, #00a86b);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.btn-complete[disabled] {
+  opacity: 0.5;
+  cursor: default;
+}

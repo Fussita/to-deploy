@@ -1,0 +1,87 @@
+.client-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(11,22,33,0.08);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 320px;
+  height: fit-content;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#e6f7f2,#dff3ef);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #008c75;
+}
+
+.meta .name {
+  font-weight: 600;
+  color: #0b1621;
+}
+
+.meta .small {
+  font-size: 12px;
+  color: #556565;
+}
+
+.status {
+  margin-left: auto;
+  font-size: 12px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: #eaf7f4;
+  color: #006a53;
+}
+
+.status.inactive {
+  background: #fff0f0;
+  color: #b22a2a;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  color: #223033;
+}
+
+.card-body .field span {
+  display: block;
+  font-size: 12px;
+  color: #556565;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.btn {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #d7e6e2;
+  background: transparent;
+  cursor: pointer;
+}
+
+.btn.danger {
+  background: #ffebe9;
+  border-color: #ffc6c0;
+  color: #b22a2a;
+}

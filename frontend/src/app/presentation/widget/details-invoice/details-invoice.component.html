@@ -1,0 +1,65 @@
+<div class="card-orden" id="toPdf">
+  <header class="card-header">
+    <div class="title">Factura {{ invoice?._id }}</div>
+    <div icon (click)="generarPDF()" style="cursor: pointer; font-size: 24px;">picture_as_pdf</div>
+	
+    <div class="date">{{ formatDate(order?.date) }}</div>
+  </header>
+
+  <section class="section client">
+    <h3>Pedido {{ order?.orderId }}</h3>
+    
+    <div class="status-row"><strong>Estado:</strong> <span class="status">{{ order?.paid ? 'Pagado' : 'En espera por comprobante' }}</span></div>
+    <h3>Comprobante de pago</h3>
+    <section flex style="justify-content: center; height: 60%;">
+      <img *ngIf="order?.imageBase64" [src]="order?.imageBase64">
+    </section>
+  </section>
+
+  <section class="section client">
+    <h3>Cliente</h3>
+    <div class="client-grid">
+      <div><strong>Nombre:</strong> {{ order?.client?.name || '—' }}</div>
+      <div><strong>Email:</strong> {{ order?.client?.email || '—' }}</div>
+      <div><strong>Teléfono:</strong> {{ order?.client?.phone || '—' }}</div>
+      <div><strong>Dirección:</strong> {{ order?.client?.address || '—' }}</div>
+    </div>
+  </section>
+
+  <section class="section products">
+    <h3>Productos</h3>
+    <ng-container *ngIf="order?.details as details; else noProducts">
+      <table class="products-table" *ngIf="details.length > 0">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+            <th>IVA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of details">
+            <td>{{ d.product?.name || '—' }}</td>
+            <td>{{ (d.product?.price ?? 0) | number:'1.2-2' }}</td>
+            <td>{{ d.quantity ?? 0 }}</td>
+            <td>{{ (d.total ?? ((d.product?.price ?? 0) * (d.quantity ?? 0))) | number:'1.2-2' }}</td>
+            <td>{{ ( !d.product.iva )? 0 : (d.quantity*d.product.price*0.16) | number:'1.2-2' }}</td>
+          </tr>
+        </tbody>
+        
+      </table>
+    </ng-container>
+    <ng-template #noProducts>
+      <div class="no-products">No hay productos en este pedido.</div>
+    </ng-template>
+  </section>
+
+  <section class="section summary">
+    <div class="summary-row"><span>Subtotal</span><span>{{ subtotal | number:'1.2-2' }}</span></div>
+    <div class="summary-row"><strong>IVA</strong><strong>{{ getTotalIVA() | number:'1.2-2' }}</strong></div>
+    <div class="summary-row"><strong>Total</strong><strong>{{ getTotalIVA()+total | number:'1.2-2' }}</strong></div>
+  </section>
+  
+</div>

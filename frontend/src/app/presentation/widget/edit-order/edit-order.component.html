@@ -1,0 +1,24 @@
+<div class="modal-overlay" (click)="onClose()"></div>
+
+<div class="modal-window" role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
+	<div class="modal-card">
+		<form class="dialog-form" (submit)="saveOrder(); $event.preventDefault()">
+			<h3 class="title">Cargar Comprobante de Pago</h3>
+
+			<div flex-col>
+				<label class="form-field">
+					<span>Pedido #{{order?.orderId}}</span>
+				</label>
+
+				<div style="height: 1em;"></div>
+				<input type="file" (change)="onFileSelected($event)" />
+
+			</div>
+
+			<div class="modal-actions">
+				<button type="button" class="btn-cancel" (click)="onClose()">Cancelar</button>
+				<button type="submit" (click)="sendFile()" class="btn-save">Cargar Comprobante</button>
+			</div>
+		</form>
+	</div>
+</div>

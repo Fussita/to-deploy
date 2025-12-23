@@ -1,0 +1,62 @@
+<div class="cont-prin-ordenes">
+    <section class="section-1">
+    <div>
+      <h1>Gestión de Pedidos</h1>
+      <p>Administra las Pedidos desde esta sección.</p>
+    </div>
+
+    <div class="user-actions">
+      <button type="button" class="btn-add-user" (click)="openCreateOrder()">Agregar Pedido</button>
+    </div>
+  </section>  
+
+  <div class="input-search">
+      <input type="text" class="inp-a" placeholder="Buscar Pedido por Cliente" [formControl]="inpSearch">
+    </div>
+  
+  <!-- Render create order modal when requested -->
+  <app-create-orden *ngIf="showCreateOrder" [clients]="clients" [products]="products" [user]="currentSeller" (close)="closeCreateOrder()" (create)="onCreateOrder($event)"></app-create-orden>
+  
+  <edit-order *ngIf="showEditOrder" [order]="orderSelected" (close)="closeEdit()" (create)="onEditOrder($event)"></edit-order>
+  
+  <section class="section-2" *ngIf="orders && orders.length">
+    <h2>Pedidos recientes</h2>
+  
+    <ul class="orders-list">
+      <li *ngFor="let o of orders" 
+      >
+        <!--- (click)="selectOrder(o)" style="cursor: pointer;" --->
+        
+        <div class="meta" >
+          <span class="id-badge">#{{ o.orderId }}</span>
+          <div class="info">
+            <span class="client">Cliente: {{ o.client?.name || ('Cliente ' + (o.client?._id || '—')) }}</span>
+            <span class="seller">Vendedor: {{ o.user?.username || '—' }}</span>
+            <span class="items">{{ o.details?.length || 0 }} ítems</span>
+            <span class="status">Estado: {{ o.paid ? 'Pagado' : 'Esperando Comprobante' }}</span>
+          </div>
+        </div>
+        <div class="total">{{ o.total | number:'1.2-2' }}</div>
+        <div class="order-actions">
+
+          @if (!o.paid) {
+            <button type="button" class="btn-edit" (click)="$event.stopPropagation(); openEdit(o)">Cargar Pago</button>
+          }
+
+          <button type="button" class="btn-delete" (click)="$event.stopPropagation(); onDelete(o._id)">Eliminar</button>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Order preview modal 
+  <div class="order-preview-overlay" *ngIf="selectedOrder">
+      <div class="order-preview-wrapper">
+      <button class="close-preview" type="button" (click)="closeSelected()">Cerrar</button>
+      <app-card-orden [order]="selectedOrder"></app-card-orden>
+
+    </div>
+  </div>
+  -->
+
+</div>

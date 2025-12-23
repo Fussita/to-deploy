@@ -1,0 +1,261 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.38);
+  z-index: 998;
+}
+
+.modal-window {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 999;
+}
+
+.modal-card {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(11, 22, 33, 0.18);
+  padding: 16px;
+  width: 100%;
+  max-width: 760px;
+}
+
+/* Form / layout */
+.dialog-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+  min-width: 0;
+}
+
+.title {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #0b1621;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr ;
+  }
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field > span {
+  font-size: 13px;
+  color: #21313a;
+  font-weight: 600;
+}
+
+input,
+select,
+textarea {
+  padding: 8px 10px;
+  border: 1px solid #e3e7ea;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+/* Products search/list */
+.products-search input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #e3e7ea;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.products-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  max-height: 240px;
+  overflow: auto;
+}
+
+@media (min-width: 640px) {
+  .products-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.product-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #eef2f4;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.product-card .prod-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card .prod-name {
+  font-weight: 600;
+  color: #0b1621;
+}
+
+.product-card .prod-price {
+  color: #006a53;
+  font-weight: 600;
+}
+
+.product-card .prod-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.product-card .prod-meta small {
+  color: #5b6b70;
+}
+
+.product-card button {
+  background: #008c75;
+  color: #fff;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Cart / selected items */
+.cart-list {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 200px;
+  overflow: auto;
+}
+
+.cart-item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #f0f4f5;
+}
+
+.cart-name {
+  flex: 1;
+  font-weight: 600;
+  color: #0b1621;
+}
+
+.cart-qty {
+  width: 96px;
+}
+
+.cart-item input {
+  width: 72px;
+  padding: 6px;
+  border: 1px solid #e3e7ea;
+  border-radius: 6px;
+}
+
+.cart-remove button {
+  background: transparent;
+  border: 1px solid #ddd;
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Actions */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.btn-cancel {
+  background: transparent;
+  border: 1px solid #d0d7da;
+  color: #21313a;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-save {
+  background: #008c75;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* utility */
+.full {
+  width: 100%;
+}
+
+/* Orders grid: small selectable cards */
+.orders-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.order-card {
+  width: 134px;
+  height: 92px;
+  display: inline-flex;
+  box-sizing: border-box;
+  padding: 8px;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  background: #f7faf9;
+  border: 1px solid #e6eef2;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #0b1621;
+  user-select: none;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+
+.order-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(11,22,33,0.06);
+}
+
+.order-card.selected {
+  background: #008c75;
+  color: #fff;
+  border-color: #007a65;
+}
+
+.order-label {
+  font-weight: 600;
+}

@@ -1,0 +1,116 @@
+.editar-producto-form {
+	max-width: 640px;
+	width: 100%;
+	margin: 0;
+	padding: 20px;
+	background: #fff;
+	border-radius: 12px;
+	box-shadow: 0 8px 28px rgba(16,24,40,0.08);
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.editar-producto-form .field {
+	display: flex;
+	flex-direction: column;
+}
+
+.editar-producto-form label {
+	font-size: 13px;
+	color: #334155;
+	margin-bottom: 6px;
+	font-weight: 600;
+}
+
+.editar-producto-form input[type="text"],
+.editar-producto-form input[type="number"],
+.editar-producto-form textarea {
+	height: 44px;
+	padding: 0 12px;
+	border: 1px solid #e6e9ee;
+	border-radius: 8px;
+	background: #fbfdff;
+	transition: border-color 150ms ease, box-shadow 150ms ease;
+	outline: none;
+	font-size: 14px;
+	color: #0f1724;
+}
+
+.editar-producto-form textarea { height: 90px; padding-top: 8px; }
+
+.editar-producto-form input:focus,
+.editar-producto-form textarea:focus {
+	border-color: #2563eb;
+	box-shadow: 0 10px 24px rgba(37,99,235,0.08);
+}
+
+.editar-producto-form .actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+}
+
+.editar-producto-form button {
+	min-width: 96px;
+	height: 40px;
+	padding: 0 14px;
+	border-radius: 8px;
+	border: none;
+	cursor: pointer;
+	font-weight: 700;
+}
+
+.editar-producto-form button[type="button"] { background: #f3f4f6; color: #111827 }
+.editar-producto-form button[type="submit"] { background: linear-gradient(90deg,#0ea5e9,#2563eb); color: #fff }
+
+@media (max-width: 560px) {
+	.editar-producto-form { padding: 14px }
+}
+
+.confirm-box {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	background: #fff9f0;
+	border: 1px solid #f59e0b;
+	padding: 6px 8px;
+	border-radius: 8px;
+}
+.confirm-box span { font-size: 13px; color: #7c2d12 }
+.confirm-box .confirm-yes {
+	background: #10b981;
+	color: white;
+	border: none;
+	padding: 6px 10px;
+	border-radius: 6px;
+	cursor: pointer;
+}
+.confirm-box .confirm-no {
+	background: #ef4444;
+	color: white;
+	border: none;
+	padding: 6px 10px;
+	border-radius: 6px;
+	cursor: pointer;
+}
+.field-error {
+  margin-top: 6px;
+}
+
+.field-error small {
+  display: block;
+  color: #b22a2a;
+  font-size: 12px;
+}
+.editar-cliente-form button[type="submit"] {
+	background: linear-gradient(90deg,#2563eb,#5b8def);
+	color: #fff;
+	box-shadow: 0 8px 20px rgba(37,99,235,0.12);
+}
+
+.editar-cliente-form button[disabled] {
+	opacity: 0.6;
+	cursor: not-allowed;
+	box-shadow: none;
+}

@@ -1,0 +1,20 @@
+<div class="client-card" *ngIf="client">
+  <div class="card-header">
+    <div class="avatar">{{ client.name ? (client.name.charAt(0) | uppercase) : '?' }}</div>
+    <div class="meta">
+      <div class="name">{{ client.name }}</div>
+      <div class="small">{{ client.email || '—' }}</div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="field"><span>Teléfono</span><div>{{ client.phone || '—' }}</div></div>
+    <div class="field"><span>Dirección</span><div>{{ client.address || '—' }}</div></div>
+  </div>
+
+  <div class="card-actions">
+    <button type="button" class="btn" (click)="edit.emit(client._id)">Editar</button>
+    <button 
+        *ngIf="user.User.role == 'Admin'" type="button" class="btn danger" (click)="delete.emit(client._id)">Eliminar</button>
+  </div>
+</div>

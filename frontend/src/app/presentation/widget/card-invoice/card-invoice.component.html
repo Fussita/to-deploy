@@ -1,0 +1,23 @@
+<article class="card-invoice" *ngIf="invoice" style="cursor: pointer;" >
+	<header class="card-header">
+		
+		<div class="date">{{ invoice.date | date:'mediumDate' }}</div>
+	</header>
+	
+	<div style="color: rgb(87, 87, 87); font-size: 12px;">Factura {{ invoice._id }}</div>
+	
+	<button 
+		*ngIf="invoice.status != 'ANULADA' && user.User.role == 'Admin'"
+		type="button" class="btn-delete" (click)="onDelete(invoice._id)" >Anular Factura</button>
+  
+	<div class="card-body">
+		<div class="row"><span class="label">Pedido:</span> <span class="value">{{ invoice.order?.orderId }}</span></div>
+		<div class="row"><span class="label">Cliente:</span> <span class="value">{{ invoice.order?.client?.name || '—' }}</span></div>
+		<div class="row"><span class="label">Vendedor:</span> <span class="value">{{ invoice.order?.user?.username || '—' }}</span></div>
+		<div class="row"><span class="label">Ítems:</span> <span class="value">{{ invoice.order?.details?.length || 0 }}</span></div>
+	</div>
+
+	<footer class="card-footer">
+		<div class="total">Total: <strong>{{ invoice.total | number:'1.2-2' }}</strong></div>
+	</footer>
+</article>

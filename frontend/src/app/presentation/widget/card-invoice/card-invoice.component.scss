@@ -1,0 +1,59 @@
+
+.card-invoice {
+	background: #ffffff;
+	border-radius: 10px;
+	box-shadow: 0 8px 24px rgba(16,24,40,0.06);
+	padding: 14px;
+	width: 340px;
+    height: fit-content;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.card-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
+
+
+.btn-delete {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ffc6c0;
+  background: #ffebe9;
+  color: #b22a2a;
+  cursor: pointer;
+}
+
+
+.card-header .id {
+	font-weight: 700;
+	color: #0f1724;
+}
+
+.card-header .date {
+	color: #6b7280;
+	font-size: 0.9rem;
+}
+
+.card-body {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.card-body .row { display:flex; gap:8px; }
+.card-body .label { color: #475569; font-weight:600; width:80px }
+.card-body .value { color: #0f1724 }
+
+.card-footer { display:flex; justify-content:flex-end }
+.card-footer .total { color:#0f1724 }
+
+@media (max-width: 720px) {
+	.card-invoice { width: 100%; }
+}
+

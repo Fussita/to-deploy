@@ -1,0 +1,36 @@
+<div class="modal-overlay" (click)="onClose()"></div>
+
+<div class="modal-window" role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
+	<div class="modal-card">
+		<form class="dialog-form" (submit)="$event.preventDefault()">
+			<h3 class="title">Crear Factura</h3>
+
+			<div class="form-grid">
+				<div class="form-field">
+					<span>Orden</span>
+					<div class="orders-grid" role="list">
+						<div
+							class="order-card"
+							role="button"
+							*ngFor="let order of orders"
+							[ngClass]="{ selected: selectedOrder === order._id }"
+							(tabindex)="0"
+							(click)="selectedOrder = order._id"
+						>
+							<div class="order-label"> <p> Orden {{ order.orderId }} </p> </div>
+							<div class="order-client">{{ order.client?.name || '—' }}</div>
+							<div class="order-date">{{ order.date | date:'mediumDate' }}</div>
+							<div> Total: {{ order.total | number:'1.2-2' }} </div>
+							<div> Ítems: {{ order.details?.length || 0 }} </div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal-actions">
+				<button type="button" class="btn-cancel" (click)="onClose()">Cancelar</button>
+				<button type="submit" class="btn-save" (click)="sendSubmit()">Crear Factura</button>
+			</div>
+		</form>
+	</div>
+</div>

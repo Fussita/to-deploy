@@ -1,0 +1,130 @@
+.cont-prin-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 96vh;
+    padding: 20px 16px;
+    gap: 8px;
+}
+
+/* Título */
+.nav-title {
+    flex: 0 0 auto;
+    text-align: start;
+    padding-bottom: 40px;
+    border-bottom: solid 2px rgba(15, 23, 42, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-title h1 {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #008c75;
+}
+.nav-title h3 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #5f5f5f;
+}
+
+/* Contenido principal del nav (links) */
+.nav-content {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 8px 4px;
+}
+
+.nav-content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-content li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 8px;
+    border-radius: 8px;
+    color: #0f172a;
+    text-decoration: none;
+    font-weight: 400; /* tipografía más fina */
+}
+
+.nav-content li a:hover {
+    background-color: #208f7c;
+}
+.nav-content li a:active {
+    background-color: #439486;
+}
+
+/* Icono al inicio de cada enlace */
+.nav-content .icon {
+    display: inline-flex;
+    width: 18px;
+    height: 18px;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+}
+
+/* Estado activo para todos los items */
+.nav-content li.active a,
+.nav-content li a.active,
+.nav-content li.active > a {
+    color: #008c75;
+    background-color: rgba(0, 140, 117, 0.06);
+}
+
+/* Sección de ajustes y acciones */
+.nav-settings {
+    flex: 0 0 28%; /* aumentar la porción reservada en la barra lateral */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 8px; /* más espacio interno */
+    min-height: 80px; /* garantizar altura mínima para que no se vea aplastado */
+    border-top: 1px solid rgba(15, 23, 42, 0.04);
+}
+
+.nav-settings a {
+    color: #506177;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.nav-settings button {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    background: #ef4444;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Ajustes responsive: reducir padding y tamaño en pantallas pequeñas */
+@media (max-width: 420px) {
+    .cont-prin-nav {
+        padding: 12px 10px;
+        gap: 12px;
+    }
+
+    .nav-title h1 {
+        font-size: 1rem;
+    }
+
+    .nav-content li a {
+        padding: 9px 10px;
+        font-size: 0.95rem;
+    }
+}

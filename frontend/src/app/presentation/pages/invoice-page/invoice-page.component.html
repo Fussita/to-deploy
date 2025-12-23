@@ -1,0 +1,70 @@
+<div class="cont-prin-ordenes" >
+    <section class="section-1">
+    <div>
+      <h1>Gestión de Facturas</h1>
+      <p>Administra las facturas desde esta sección</p>
+    </div>
+    <div flex class="user-actions" style="gap: 1em;">
+      <button type="button" class="btn-add-user" (click)="openCreateInvoice()">Agregar Factura</button>
+      <button type="button" class="btn-add-user" (click)="descargarArchivo()">Descargar Manual</button>
+    </div>
+  
+  </section>  
+
+  <app-create-invoice *ngIf="showCreateInvoice"(close)="closeCreateInvoice()" (create)="onCreateOrder($event)"></app-create-invoice>
+
+  <div class="input-search">
+      <input type="text" class="inp-a" placeholder="Buscar Facturas..." [formControl]="inpSearch">
+    </div>
+
+  <section class="section-2" *ngIf="invoicesComplete && invoicesComplete.length">
+    <div class="expansion-panel">
+      <button class="panel-header" type="button" id="completed-panel-button" (click)="toggleCompleted()" [attr.aria-expanded]="showCompleted" aria-controls="completedInvoicesPanel">
+        <h2 id="completed-panel-title">Facturas Completadas</h2>
+        <span class="panel-caret" [class.open]="showCompleted"></span>
+      </button>
+
+      <div class="panel-body" id="completedInvoicesPanel" role="region" [attr.aria-labelledby]="'completed-panel-title'" [class.open]="showCompleted">
+        <div class="invoices-grid">
+          <app-card-invoice
+            (click)="openInvoice(o)"
+            (complete)="completeFromCompleted($event)"
+            *ngFor="let o of invoicesComplete"
+            [invoice]="o">
+          </app-card-invoice>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section-2" *ngIf="invoicesNull && invoicesNull.length">
+    <div class="expansion-panel">
+      <button class="panel-header" type="button" id="null-panel-button" (click)="toggleNull()" [attr.aria-expanded]="showNull" aria-controls="nullInvoicesPanel">
+        <h2 id="null-panel-title">Facturas Anuladas</h2>
+        <span class="panel-caret" [class.open]="showNull"></span>
+      </button>
+
+      <div class="panel-body" id="nullInvoicesPanel" role="region" [attr.aria-labelledby]="'null-panel-title'" [class.open]="showNull">
+        <div class="invoices-grid">
+          <app-card-invoice
+            (click)="openInvoice(o)"
+            (complete)="completeFromNull($event)"
+            *ngFor="let o of invoicesNull"
+            [invoice]="o">
+          </app-card-invoice>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</div>
+
+
+<div class="order-preview-overlay" *ngIf="selectedOrder">
+      <div class="order-preview-wrapper">
+      <button class="close-preview" type="button" (click)="closeSelected()">Cerrar</button>
+      <details-invoice [order]="selectedOrder" [invoice]="forDetailInvoice"></details-invoice>
+    </div>
+</div>
+  

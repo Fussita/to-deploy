@@ -1,0 +1,43 @@
+<div class="modal-overlay" (click)="onCancel()"></div>
+
+<div class="modal-window" role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
+  <div class="modal-card">
+    <form class="dialog-form" (ngSubmit)="onSave()" [formGroup]="form" novalidate>
+      <h3 class="title">Crear usuario</h3>
+
+      <div class="form-grid">
+        <label class="form-field">
+          <span>Usuario</span>
+          <input formControlName="username" type="text" />
+          <div class="field-error" *ngIf="form.get('username')?.touched && form.get('username')?.invalid">
+            <small *ngIf="form.get('username')?.hasError('pattern') && form.get('username')?.touched">Formato inválido.</small>
+            <small *ngIf="form.get('username')?.hasError('required') && form.get('username')?.touched">El usuario es obligatorio.</small>
+          </div>
+        </label>
+
+        <label class="form-field">
+          <span>Contraseña</span>
+          <input formControlName="password" type="text" />
+          <div class="field-error" *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
+            <small *ngIf="form.get('password')?.hasError('pattern') && form.get('password')?.touched">Formato inválido.</small>
+            <small *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched">La contraseña es obligatoria.</small>
+          </div>
+        </label>
+
+        <label class="form-field">
+          <span>Rol</span>
+          <select formControlName="role">
+            <option>Admin</option>
+            <option>Vendedor</option>
+          </select>
+        </label>
+
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-cancel" (click)="onCancel()">Cancelar</button>
+        <button type="submit" class="btn-save">Crear</button>
+      </div>
+    </form>
+  </div>
+</div>

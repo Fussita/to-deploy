@@ -1,0 +1,72 @@
+<div class="modal-overlay" (click)="onClose()"></div>
+
+<div class="modal-window" role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
+	<div class="modal-card">
+		<form class="dialog-form" (submit)="saveOrder(); $event.preventDefault()">
+			<h3 class="title">Crear orden</h3>
+
+			<div class="form-grid">
+				<label class="form-field">
+					<span>Cliente</span>
+					<select name="selectedClient" [(ngModel)]="selectedClientId" aria-label="Seleccionar cliente">
+						<option [ngValue]="null">-- Selecciona cliente --</option>
+						<option *ngFor="let c of clients" [ngValue]="c._id">{{ c.name }} — {{ c.email }}</option>
+					</select>
+				</label>
+			</div>
+
+			<!-- Debug counts: useful to check products are passed correctly -->
+			<div class="debug-counts" *ngIf="products">
+				<small>Productos disponibles: {{ products.length }} — Filtrados: {{ filteredProducts.length }}</small>
+			</div>
+		
+		<h4>Agregar productos</h4>
+			<div class="products-search">
+				<input name="searchTerm" type="search" placeholder="Buscar producto..." [(ngModel)]="searchTerm" />
+		</div>
+
+		<div class="products-list">
+					<div class="product-card" *ngFor="let p of filteredProducts">
+						<div class="prod-main">
+							<div class="prod-name">{{ p.name }}</div>
+							<div class="prod-price">{{ p.price | number:'1.2-2' }}</div>
+						</div>
+						<div class="prod-meta">
+							<small>Stock: {{ p.stock }}</small>
+							<button type="button" (click)="addToCart(p)" [disabled]="p.stock <= 0">Agregar</button>
+						</div>
+					</div>
+		</div>
+
+		<h4>Productos en la orden</h4>
+		<div class="cart-list">
+			<div *ngIf="selectedProducts.length === 0">No hay productos seleccionados.</div>
+			<div *ngFor="let item of selectedProducts" class="cart-item">
+				<div class="cart-name">{{ item.product.name }}</div>
+
+				@if ( item.product.iva == true ) {
+					<div ft-12-500>IVA ${{item.product.price*item.quantity*(0.16)}}</div>
+				}
+
+				<div class="cart-qty">
+					<input type="number" [value]="item.quantity" (input)="setQuantity(item.product, $any($event.target).value)" [min]="1" [max]="item.product.stock" />
+				</div>
+				<div class="cart-remove"><button type="button" (click)="removeFromCart(item.product)">Eliminar</button></div>
+			</div>
+		</div>
+
+		<div class="order-summary">
+			<strong>Total:</strong> {{ getTotal() | number:'1.2-2' }}
+			<strong>IVA:</strong> {{ getTotalIVA() | number:'1.2-2' }}
+		</div>
+		<div class="order-summary">
+			<strong>TOTAL + IVA:</strong> {{ getTotal()+getTotalIVA() | number:'1.2-2' }}
+		</div>
+
+			<div class="modal-actions">
+				<button type="button" class="btn-cancel" (click)="onClose()">Cancelar</button>
+				<button type="submit" class="btn-save">Crear orden</button>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,111 @@
+
+.editar-cliente-form {
+	max-width: 520px;
+	margin: 20px auto;
+	padding: 20px 22px;
+	background: #ffffff;
+	border-radius: 12px;
+	box-shadow: 0 6px 18px rgba(20,20,40,0.08);
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.editar-cliente-form .field {
+	display: flex;
+	flex-direction: column;
+}
+
+.editar-cliente-form label {
+	font-size: 13px;
+	color: #344054;
+	margin-bottom: 6px;
+	font-weight: 600;
+}
+
+.editar-cliente-form input[type="text"],
+.editar-cliente-form input[type="email"] {
+	height: 44px;
+	padding: 0 12px;
+	border: 1px solid #e6e9ee;
+	border-radius: 8px;
+	background: #fbfdff;
+	transition: border-color 150ms ease, box-shadow 150ms ease, transform 80ms ease;
+	outline: none;
+	font-size: 14px;
+	color: #0f1724;
+}
+
+.editar-cliente-form input::placeholder {
+	color: #9aa4b2;
+}
+
+.editar-cliente-form input:focus {
+	border-color: #5b8def;
+	box-shadow: 0 6px 18px rgba(91,141,239,0.12);
+	transform: translateY(-1px);
+}
+
+.editar-cliente-form .error {
+	color: #d14343;
+	font-size: 12px;
+	margin-top: 6px;
+}
+
+.editar-cliente-form .actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+	margin-top: 8px;
+}
+
+.editar-cliente-form button {
+	min-width: 96px;
+	height: 40px;
+	padding: 0 14px;
+	border-radius: 8px;
+	border: none;
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 14px;
+}
+
+.editar-cliente-form button[type="button"] {
+	background: transparent;
+	color: #334155;
+	border: 1px solid transparent;
+}
+
+.editar-cliente-form button[type="button"]:hover {
+	background: #f4f6fb;
+}
+
+.editar-cliente-form button[type="submit"] {
+	background: linear-gradient(90deg,#2563eb,#5b8def);
+	color: #fff;
+	box-shadow: 0 8px 20px rgba(37,99,235,0.12);
+}
+
+.editar-cliente-form button[disabled] {
+	opacity: 0.6;
+	cursor: not-allowed;
+	box-shadow: none;
+}
+.field-error {
+  margin-top: 6px;
+}
+
+.field-error small {
+  display: block;
+  color: #b22a2a;
+  font-size: 12px;
+}
+
+@media (max-width: 560px) {
+	.editar-cliente-form {
+		margin: 12px;
+		padding: 16px;
+	}
+}
+

@@ -1,0 +1,54 @@
+<div class="cont-prin-usu">
+  <section class="section-1">
+    <div>
+      <h1>Gestión de Usuarios</h1>
+      <p>Administra los usuarios de la aplicación desde esta sección.</p>
+    </div>
+
+    <div class="user-actions">
+      <button class="btn-add-user" (click)="openCreateUser()">Agregar Usuario</button>
+    </div>
+  </section>
+
+  <!-- componente modal reutilizable -->
+  <app-create-user *ngIf="showCreateForm" (create)="onCreate($event)" (cancel)="closeCreateUser()"></app-create-user>
+
+  <div class="input-search">
+    <input class="sub-top-inp inp-a" [formControl]="inpSearch" placeholder="Buscar Usuario" type="text" > 
+  </div>
+
+  <section class="section-2">
+    <table>
+      <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Contraseña</th>
+          <th>Rol</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.username }}</td>
+          <td>{{ user.password }}</td>
+          <td>{{ user.role }}</td>
+          <td>
+            <button class="btn-edit" (click)="editUser(user._id)">Editar</button>
+            <button class="btn-delete" (click)="deleteUser(user._id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <!-- modal editar usuario -->
+  <div class="modal-overlay" *ngIf="editingUser" (click)="editingUser = null">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <app-editar-usuario
+        [user]="editingUser"
+        [userId]="editingUser._id"
+        (saved)="handleEditSaved($event)"
+        (cancelled)="editingUser = null">
+      </app-editar-usuario>
+    </div>
+  </div>
+</div>

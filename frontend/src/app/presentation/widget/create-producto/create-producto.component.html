@@ -1,0 +1,55 @@
+<div class="modal-overlay" (click)="onClose()"></div>
+
+<div class="modal-window" role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
+  <div class="modal-card">
+    <form class="dialog-form" (ngSubmit)="onSave()" [formGroup]="form" novalidate>
+      <h3 class="title">Crear producto</h3>
+
+      <div class="form-grid">
+        <label class="form-field">
+          <span>Nombre</span>
+          <input formControlName="name" type="text" />
+          <div class="field-error" *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
+            <small *ngIf="form.get('name')?.hasError('pattern') && form.get('name')?.touched">Solo letras y números, entre 2 y 100 carácteres.</small>
+            <small *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">El nombre es obligatorio.</small>
+          </div>
+        </label>
+
+        <label class="form-field">
+          <span>Precio</span>
+          <input formControlName="price" type="number" step="0.01" />
+          <div class="field-error" *ngIf="form.get('price')?.touched && form.get('price')?.invalid">
+            <small *ngIf="form.get('price')?.hasError('required') && form.get('price')?.touched">El precio es obligatorio.</small>
+          </div>
+        </label>
+
+        <label>
+          <input ft-12-500 type="checkbox" formControlName="iva" />
+            Producto Incluye IVA
+        </label>
+
+        <label class="form-field">
+          <span>Stock</span>
+          <input formControlName="stock" type="number" />
+          <div class="field-error" *ngIf="form.get('stock')?.touched && form.get('stock')?.invalid">
+            <small *ngIf="form.get('stock')?.hasError('required') && form.get('stock')?.touched">El stock es obligatorio.</small>
+          </div>  
+        </label>
+
+        <label class="form-field" style="grid-column: 1 / -1;">
+          <span>Descripción</span>
+          <textarea formControlName="description" rows="3"></textarea>
+          <div class="field-error" *ngIf="form.get('description')?.touched && form.get('description')?.invalid">
+            <small *ngIf="form.get('description')?.hasError('pattern') && form.get('description')?.touched">Solo letras y números, entre 8 y 200 carácteres.</small>
+            <small *ngIf="form.get('description')?.hasError('required') && form.get('description')?.touched">La descripción es obligatoria.</small>
+          </div>
+        </label>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-cancel" (click)="onClose()" [disabled]="saving">Cancelar</button>
+        <button type="submit" class="btn-save" [disabled]="saving">{{ saving ? 'Creando...' : 'Crear' }}</button>
+      </div>
+    </form>
+  </div>
+</div>
