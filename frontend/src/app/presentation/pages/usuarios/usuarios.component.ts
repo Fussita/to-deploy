@@ -50,6 +50,7 @@ export class UsuariosComponent implements OnInit {
     this.userService.findAll().subscribe({
       next: (e: any) => {
         this.users = e
+        console.log(e)
         this.allUsers = Array.isArray(e) ? e : [];
       }
     })

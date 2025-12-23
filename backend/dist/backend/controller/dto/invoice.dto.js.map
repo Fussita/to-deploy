@@ -1,0 +1,1 @@
+{"version":3,"file":"invoice.dto.js","sourceRoot":"","sources":["../../../../src/controller/dto/invoice.dto.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,qDAAkG;AAElG,MAAa,YAAY;CAKxB;AALD,oCAKC;AADC;IAHC,IAAA,0BAAQ,GAAE;IACV,IAAA,2BAAS,EAAC,CAAC,EAAE,EAAE,OAAO,EAAE,uDAAuD,EAAE,CAAC;IAClF,IAAA,2BAAS,EAAC,GAAG,EAAE,EAAE,OAAO,EAAE,yDAAyD,EAAE,CAAC;;6CACxE"}
