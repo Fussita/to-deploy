@@ -1,4 +1,4 @@
 
 export class AppConfig {
-    static api: string = 'http://127.0.0.1:3000/api'
+    static api: string = 'http://3.144.197.103:3000/api'
 }
